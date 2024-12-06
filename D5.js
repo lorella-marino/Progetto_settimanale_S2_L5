@@ -63,9 +63,9 @@ const cars = [
   },
 ]
 
-cars.forEach((car, index) => {
-  return car.licensePlate = "ABCD";
-});
+for (let i = 0; i < cars.length; i++) {
+  cars[i].licensePlate = "ABCD";
+}
 
 console.log(cars)
 
@@ -78,11 +78,17 @@ const car4 = {
   brand: 'Fiat',
   model: 'Model1',
   color: 'white',
-  trims: ['family'],
+  trims: ['style','active'],
   licensePlate: 'ABCD',
 }
 
 cars.push(car4)
+
+for (let i = 0; i < cars.length; i++) {
+  cars[i].trims.pop();
+}
+
+console.log(cars)
 
 /* ESERCIZIO 7
     Scrivi del codice per salvare il primo elemento della proprietà "trims" 
@@ -91,9 +97,7 @@ cars.push(car4)
 const justTrims = []
 
 for (let i=0; i < cars.length; i++){
-  if (cars[i].trims > "1"){
     justTrims.push(cars[i].trims[0])
-  }
 }
 
 console.log(justTrims)
@@ -104,24 +108,52 @@ console.log(justTrims)
     "color" ha valore "b", mostra in console "Fizz". Altrimenti, mostra in console "Buzz".
 */
 
-/* for (let i=0; i < cars.length; i++){
-  if (color.charAt(0).toLowerCase() === 'b') {
+for (let i=0; i < cars.length; i++){
+  if (cars[i].color.charAt(0).toLowerCase() === 'b') {
     console.log('Fizz');
   } else {
     console.log('Buzz');
   }
-} */
+}
 
 /* ESERCIZIO 9
-    Utilizza un ciclo while per stampare in console i valori del seguente array numerico fino al raggiungimento del numero 32.
+    Utilizza un ciclo while per stampare in console i valori del seguente
+    array numerico fino al raggiungimento del numero 32.
 */
 const numericArray = [
   6, 90, 45, 75, 84, 98, 35, 74, 31, 2, 8, 23, 100, 32, 66, 313, 321, 105,
 ]
 
+let i = 0
+
+while (i < numericArray.length) {
+  console.log(numericArray[i])
+  if (numericArray[i] === 32) {
+    break
+}
+  i++
+}
+
 /* ESERCIZIO 10
-    Partendo dall'array fornito e utilizzando un costrutto switch, genera un nuovo array composto dalle posizioni di ogni carattere all'interno
+    Partendo dall'array fornito e utilizzando un costrutto switch,
+    genera un nuovo array composto dalle posizioni di ogni carattere all'interno
     dell'alfabeto italiano.
     es. [f, b, e] --> [6, 2, 5]
 */
 const charactersArray = ['g', 'n', 'u', 'z', 'd']
+
+function getPosition(char) {
+  let posizioni;
+
+  switch (char) {
+    case 'g': posizioni = 7; break;
+    case 'n': posizioni = 14; break;
+    case 'u': posizioni = 21; break;
+    case 'd': posizioni = 4; break;
+    case 'z': posizioni = 26; break
+  }
+  return posizioni;
+}
+
+const posizioni = charactersArray.map(getPosition)
+console.log(posizioni)
